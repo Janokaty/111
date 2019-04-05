@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+    <style>
+        #div{
+            background: deeppink;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:60px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+<input id="btn1" type="button" value="往前">
+<input id="btn2" type="button" value="往后"><br>
+<input id="btn3" type="button" value="往下">
+<input id="btn4" type="button" value="往上">
+<div id="div"></div>
+
+<script>
+    var oBtn1=document.getElementById("btn1");
+    var oBtn2=document.getElementById("btn2");
+    var oBtn3=document.getElementById("btn3");
+    var oBtn4=document.getElementById("btn4");
+    var oDiv=document.getElementById("div");
+    var timer=null;
+    /* 一个函数实现往前走
+    oBtn1.onclick=function(){
+        clearInterval(timer);
+         timer=setInterval(
+            function(){
+                var speed=parseInt(getStyle(oDiv,'left'))+10;
+                oDiv.style.left=speed+'px';
+                if(speed>=800){
+                    clearInterval(timer);
+                }
+                }
+        ,30);
+
+    };
+    */
+    //getStyle()函数是解决的浏览器兼容问题，直接使用ele.style.left=''只能获取行间样式。
+    function doMove(dir,target,attr){
+        clearInterval(timer);
+        timer=setInterval(
+            function(){
+                var speed=parseInt(getStyle(oDiv,attr))+dir;
+
+                if(speed>target&&dir>0||speed<target&&dir<0){
+                    speed=target; //此时的speed=800或10;
+                }
+
+                oDiv.style[attr]=speed+'px';
+                if(speed==target){
+                    clearInterval(timer);
+                }
+            }
+            ,30)
+    }
+    oBtn1.onclick=function(){doMove(10,800,'left')};
+    oBtn2.onclick=function(){doMove(-10,10,'left')};
+    oBtn3.onclick=function(){doMove(10,500,'top')};
+    oBtn4.onclick=function(){doMove(-10,60,'top')};
+
+    function getStyle(obj,attr){
+        return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+    }
+</script>
+</body>
+</html>

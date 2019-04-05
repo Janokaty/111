@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QQ_menu</title>
+    <style>
+        ul li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border:1px solid grey;
+        }
+        ul li ul li{
+            list-style: none;
+            display: none;
+        }
+        h2{
+            background: lightblue;
+            margin: 0;
+            padding: 0;
+        }
+        #mainUl{
+            margin: 0 auto;
+            position: relative;
+            width: 300px;
+            height: 400px;
+        }
+        .active{
+            background: orange;
+            display: block;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var aH2=document.getElementsByTagName("h2");
+            //var mainUl=document.getElementById("mainUl");
+            //var aUl = mainUl.getElementsByTagName("ul");
+            var aLi=document.getElementsByTagName("ul li ul li");
+            for(var i=0;i<aLi.length;i++) {
+                aH2[i].onclick = function () {
+                   aLi.className="active";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="mainUl">
+    <li>
+        <h2>我的好友</h2>
+        <ul>
+            <li>杨瑞妍</li>
+            <li>刘若兰</li>
+            <li>冉洪川</li>
+        </ul>
+    </li>
+    <li>
+        <h2>陌生人</h2>
+        <ul>
+            <li>张三</li>
+            <li>李四</li>
+            <li>王五</li>
+        </ul>
+    </li>
+    <li>
+        <h2>我的家人</h2>
+        <ul>
+            <li>张传燕</li>
+            <li>王德兴</li>
+            <li>魏泽莲</li>
+            <li>王祖国</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,17 @@
+.lis{
+    list-style: none;
+    border: 1px solid lightblue;
+    width: 5%;
+    display: none;
+}
+.lis:nth-child(odd){
+    background: lightblue;
+}
+#TagA{
+    position: relative;
+    left: 2.5%;
+    text-decoration: none;
+    color: black;
+    border: 1px solid lightblue;
+    font-size: 2rem;
+}

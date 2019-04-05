@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+<body>
+
+<input type="button" value="古塔啦黑暗之神，换！">
+<input type="button" value="巴啦能量，停!">
+<script>
+var oBody=document.body;
+var arr=['../images/1.png','../images/2.png','../images/3.png','../images/4.png'];
+var aBtn=document.getElementsByTagName("input");
+var num=0;
+var timer=null;
+aBtn[0].onclick=function(){
+    clearInterval(timer);
+    timer=setInterval(function () {
+        oBody.style.background='url('+arr[num]+')';
+        num++;
+        num%=arr.length;
+    },1000)
+};
+aBtn[1].onclick=function(){
+    clearInterval(timer);
+}
+</script>
+</body>
+</html>

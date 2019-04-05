@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝购物车</title>
+    <style>
+        body{margin: 0;padding: 0;}
+       #test{
+           list-style: none;
+           background: lightblue;
+       }
+        input{
+            background: coral;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul id="test">
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>10.25</em>元
+        合计：<span>0</span>元
+    </li>
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>20.25</em>元
+        合计：<span>0</span>元
+    </li>
+    <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>30.25</em>元
+        合计：<span>0</span>元
+    </li>
+</ul>
+
+<script>
+var oUl=document.getElementById("test");
+var oLi=oUl.getElementsByTagName("li")[0];
+var aInput=oLi.getElementsByTagName("input");
+clickIt();
+function clickIt() {
+    aInput[1].onclick=function(){
+        var oStrong = oLi.getElementsByTagName("strong")[0];
+        var oEm=oLi.getElementsByTagName("em");
+        var oSpan=oLi.getElementsByTagName("span");
+        var strongVal=parseFloat(oStrong.innerHTML);
+        var spanVal=parseFloat(oSpan.innerHTML);
+        var emVal=parseFloat(oEm.innerHTML);
+
+        strongVal+=emVal;
+        oStrong.innerHTML=strongVal;
+    }
+}
+</script>
+</body>
+</html>

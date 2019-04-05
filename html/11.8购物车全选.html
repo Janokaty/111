@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车全选</title>
+    <style>
+.list{
+    list-style: none;
+    font-family:"楷体";
+    font-size:36px;
+    color: lightblue;
+}
+
+    </style>
+</head>
+<body>
+<div>
+<ul>
+    <li class="list">
+        <input type="checkbox">
+        <span>私奔</span>
+        <span>梁博</span>
+    </li>
+    <li class="list">
+        <input type="checkbox">
+        <span>北京</span>
+        <span>梁博、黄勇</span>
+    </li>
+    <li class="list">
+        <input type="checkbox">
+        <span>我爱中国</span>
+        <span>梁博</span>
+    </li>
+    <li class="list">
+        <input type="checkbox">
+        <span>花火</span>
+        <span>梁博</span>
+    </li>
+    <li class="list">
+        <input type="checkbox">
+        <span>回来</span>
+        <span>梁博</span>
+    </li>
+    <li class="list">
+        <input type="checkbox">
+        <span>爱有你才完美</span>
+        <span>梁博、那英</span>
+    </li>
+    <li class="list">
+        <input type="checkbox" id="checkAll" style="height: 30px;width: 30px;margin-left: -5px">
+        <span style="color: orange">全选</span>
+    </li>
+</ul>
+</div>
+
+<script>
+    var btn = document.getElementsByTagName("input");
+    var checkAll=document.getElementById("checkAll");
+    var kaig="true";
+
+    //点击全选会发生的两种情况：全选、全不选
+    checkAll.onclick=function(){
+        if(kaig==="true") {
+            for (var i = 0; i < btn.length; i++) {
+                btn[i].checked = "checked";
+            }
+            for (var n = 0; i < btn.length; i++) {
+                btn[i].checked = "checked";
+            }
+            kaig="false";
+            //在全选的前提下点击一个非全选的按钮会是全选的按钮变成空
+            for(var m=0;m<btn.length-1;m++) {
+                btn[m].onclick = function () {
+                    checkAll.checked = "";
+                    kaig="true";
+                }
+            }
+
+        }else if(kaig==="false") {
+            for (var j = 0; j < btn.length; j++) {
+                btn[j].checked = "";
+            }
+            kaig="true";
+        }
+    };
+
+
+    //如果所有除全选以外的按钮都点了，此时的全选自动勾上
+
+</script>
+</body>
+</html>

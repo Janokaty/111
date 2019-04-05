@@ -1,0 +1,61 @@
+#container{
+    position: relative;
+    left: 35rem;
+    top:10rem;
+    background: lightgrey;
+    width: 20rem;
+    height: 15rem;
+}
+#left{
+    position: absolute;
+    top:6rem;
+    background: grey;
+    border: 1px solid grey;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    opacity: 0.6;
+    z-index: 100;
+}
+#left:hover,#right:hover{
+    background: white;
+    border: 1px solid grey;
+}
+#right{
+    position: absolute;
+    top:6rem;
+    right: 0;
+    background: grey;
+    border: 1px solid grey;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    opacity: 0.6;
+    z-index: 100;
+}
+#top{
+    position: absolute;
+    top:0;
+    background: grey;
+    opacity: 0.6;
+    width: 20rem;
+    z-index: 100;
+}
+#bottom{
+    position: absolute;
+    bottom: 0;
+    background: grey;
+    opacity: 0.6;
+    width: 20rem;
+    margin: 0;
+    z-index: 100;
+}
+#img1{
+    position: absolute;
+    top:0;
+    width: 20rem;
+}

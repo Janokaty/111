@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie</title>
+</head>
+<body>
+
+
+<script>
+    /*  cookie介绍：
+    * Cookie是一种能够让网站服务器把少量数据储存到客户端的硬盘或内存，或是从客户端的硬盘读取数据的一种技术。
+    * Cookie是当你浏览某网站时，由Web服务器置于你硬盘上的一个非常小的文本文件，它可以记录你的用户ID、密码、浏览过的网页、停留的时间等信息。
+    * 当你再次来到该网站时，网站通过读取Cookies，得知你的相关信息，就可以做出相应的动作，如在页面显示欢迎你的标语，或者让你不用输入ID、密码就直接登录等等。
+    */
+
+    /*
+    cookie:1.存储数据，当用户访问了某个网站和网页的时候，我们可以通过cookie来向访问者电脑存储数据
+           2.不同浏览器存放的cookie的位置不一样，也是不能通用的。
+           3.chrome,IE,firefox都会有自己的cookie存储数据，不同浏览器存放的cookie是不能相互通用的。
+             你用火狐储存的cookie是不能通过chrome得到这个值得。
+           4.可以存数据，访问百度会存数据，访问新浪的时候也会储存数据，成千上万个网站想储存，为了不乱套
+             就用域名来区分。（cookie存放是数据是以域名区分的）
+           5.cookie的数据可以设置名字：document.cookie='名字=值';
+           6.通过document.cookie='username=katy'来获取当前网站下的cookie时，得到的字符串形式的值，
+             包含了当前网页所有的cookie。
+           7.一个域名下存放的cookie是有限制的，不同的浏览器存放的个数是不同的。
+           8.每个cookie存放的内容也是有限制的，不同的浏览器也是不一样的。
+           9.想要长时间保存一个cookie，必须给它设置一个过期时间：
+             默认情况下，cookie 在浏览器关闭时删除：
+             document.cookie="名称 = 值; expires = "+时间;  //时间必须是字符串
+
+
+
+
+    */
+     //基本定义操作：
+    //  document.cookie='username=katy';  //像访问者的电脑里存储cookie
+    // document.cookie='age=33';   //username=katy;age=33
+    // alert(document.cookie);
+
+
+    //设置日期操作：
+    var oDate=new Date();  //可以通过 new 关键词来定义 Date 对象;Date 对象自动使用当前的日期和时间作为其初始值。
+    oDate.setDate(oDate.getDate()+5); //根据来访者当前时间加上5天
+
+    //alert(typeof oDate)  //object
+    //alert(typeof oDate.toGMTString()) ;  //string
+
+    // document.cookie='username=katy;expires='+oDate.toGMTString();  //oDate是以毫秒计算的，我们打开的时候已经过期了
+    // document.cookie='age=33';
+    // alert(document.cookie);
+
+
+    //内容最好编码存放，encodeURI
+    // document.cookie='username='+encodeURI('katy\n你好')+';expires='+oDate.toGMTString();
+    // alert(decodeURI(document.cookie));
+    // alert(encodeURI('你好'));   //%E4%BD%A0%E5%A5%BD
+    // alert(decodeURI('%E4%BD%A0%E5%A5%BD'));   //你好
+
+    //封装一个函数来获取cookie
+    function getCookie(key){
+            var arr1=document.cookie.split('; '); //通过； 去拆分成一个一个的cookie
+            for(var i=0;i<arr1.length;i++){
+                var arr2=arr1[i].split('=');
+                if(arr2[0]==key){
+                    return decodeURI(arr2[1])
+                }
+            }
+    }
+    //alert(getCookie('username'));
+
+    //封装一个函数设置cookie
+    function setCookie(key,value,t){
+        var oDate=new Date();
+        oDate.setDate(oDate.getDate()+t);
+        document.cookie=key+'='+encodeURI(value)+';expires='+oDate.toGMTString();
+    }
+    //setCookie('student','katylover',1);
+    //setCookie('username','katy',1);
+    //封装一个删除cookie的函数
+    function removeCookie(key){
+       setCookie(key,'',-1)
+    }
+    //removeCookie('student');
+    //removeCookie('username');
+</script>
+</body>
+</html>

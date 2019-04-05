@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标滑轮事件</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: lightblue;
+            margin: 0 auto;
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+     <div id="div1"></div>
+
+     <script>
+         var oDiv=document.getElementById("div1");
+         /*
+         鼠标滚轮：
+             IE、Chrome：1.使用onmousewheel;
+                         2.事件event.wheelDelta:
+                           （1）它的值表示了鼠标上或者下
+                             （2）chrome: 上： 150下：-150
+                              （3）Firefox:上：undefined 下：undefined(因为火狐没得wheelDelta这个属性)
+                              (4)IE:上： 120下：-120
+             Firefox:1.使用DOMMouseScroll，且必须使用addEventListener来绑定事件;
+                     2.事件event.detail
+                           (1）它的值表示了鼠标上或者下
+                             （2）chrome: 上： 0下：0
+                              （3）Firefox:上：-3 下：3
+                              (4)IE:上： 0下：0
+         */
+         /*function fn() {
+             //alert(1);
+         }
+         */
+
+         //事件对象的兼容：
+         function fn(ev) {
+             var ev=ev||event;
+             //alert(ev.wheelDelta);
+             //alert(ev.detail)
+             var b=true;
+             if(ev.wheelDelta){
+                 b = ev.wheelDelta > 0 ? true:false;
+             }else{
+                 b = ev.detail <0 ? true:false;
+             }
+             //alert(b);
+             if(b){
+                 this.style.height = this.offsetHeight - 10 + 'px';
+             }else{
+                 this.style.height = this.offsetHeight + 10 + 'px';
+             }
+             //兼容IE，chrome（阻止obj.on..=fn所触发的的默认行为）：return false;
+             //兼容firefox:addEventListener绑定的事件需要通过event的preventDefault()方法才能取消默认行为
+
+              if(ev.onmousewheel){
+                 return false;
+             }else {
+                 ev.preventDefault();
+              }
+         }
+         //兼容IE、Chrome：
+         oDiv.onmousewheel = fn;
+         //兼容FireFox：
+         if(oDiv.addEventListener){
+              oDiv.addEventListener('DOMMouseScroll',fn,false);
+
+         }
+     </script>
+</body>
+</html>

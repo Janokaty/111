@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义属性操作</title>
+    <style>
+        li{
+            list-style: none;
+            background: url("../images/normal.png");
+            width: 247px;
+            height: 272px;
+            float: left;
+            cursor: pointer;
+        }
+        .btn{
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        //自定义属性第一个实例
+       window.onload=function(){
+           //var oUl=document.getElementById('box');
+           var lis=document.getElementsByTagName('li');
+           for(var i=0;i<lis.length;i++){
+               //为了方便，给li一个自定义属性，相当于开关
+               lis[i].offOn=true;  //考虑函数作用域的问题
+               lis[i].onclick=function(){
+                   if(this.offOn==true){
+                       this.style.background="url('../images/active.png')";
+                       this.offOn = false;
+                   }else{
+                       this.style.background = "url('../images/normal.png')";
+                       this.offOn = true;
+                   }
+               }
+           }
+       };
+
+       //自定义属性的第二个实例
+        window.onload=function(){
+            var btn=document.getElementsByClassName("btn");
+            var arr=['A','B','C','D'];
+            for(var i=0;i<btn.length;i++){
+                btn[i].num=0;
+                btn[i].onclick=function(){
+                    this.value=arr[this.num];
+                    this.num++;
+                    if(this.num == arr.length){
+                        this.num=0;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="box">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<input type="button" value="0" class="btn">
+<input type="button" value="0" class="btn">
+<input type="button" value="0" class="btn">
+</body>
+</html>

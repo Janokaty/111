@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+           var obtn1= document.getElementById("btn1");
+            var obtn2= document.getElementById("btn2");
+            var obtnC1= document.getElementById("btnC1");
+            var obtnC2= document.getElementById("btnC2");
+            var op1= document.getElementById("p1");
+            var num=15;
+            obtn1.onclick=function(){
+                num++;
+                op1.style.fontSize=num+"px";
+            };
+
+        obtn2.onclick=function(){
+            num--;
+            op1.style.fontSize=num+"px";
+        };
+            obtnC1.onclick=function(){
+             op1.className="pink1";
+            };
+            obtnC2.onclick=function(){
+                op1.className="pink2";
+            }
+        }
+    </script>
+    <style>
+        .pink1{
+            color: crimson;
+        }
+        .pink2{
+            color: lightblue;
+        }
+    </style>
+</head>
+<body>
+     <input id="btn1" type="button" value="+">
+     <input id="btn2" type="button" value="-">
+     <input id="btnC1" type="button" value="pink">
+     <input id="btnC2" type="button" value="lightblue">
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <img src="../images/pic1.jpg">
+     <p id="p1" style="width: 640px">
+         新浪娱乐讯 据外媒报道，多年交恶和用歌曲互相吐槽之后，凯蒂·佩里（Katy Perry）与泰勒·斯威夫特（Taylor Swift）这两位流行巨星终于彻底放下龃龉，恢复平和。两人和解的信号始于今年5月，在霉霉“名望”演唱会开始之前，水果姐主动递上橄榄枝，霉霉晒出她的亲笔信并表示感谢。最近斯威夫特首次公开表明政治立场，更是得到了佩里的热情称赞。
+     </p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>你管我的感受</title>
+    <script>
+        window.onload=function(){
+            var text1=document.getElementById("text1");
+            var select=document.getElementById("select");
+            var submit=document.getElementById("submit");
+            submit.onclick=show;
+            function show(){
+                var content=text1.value+select.value;
+                alert(content);
+            }
+        };
+    </script>
+</head>
+<body>
+     <input type="text" id="text1">
+         <select id="select">
+             <option>北京</option>
+             <option>上海</option>
+             <option>重庆</option>
+         </select>
+         <input type="submit" id="submit">
+</body>
+</html>

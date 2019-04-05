@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>应用</title>
+</head>
+<body>
+<input type="text" id="username">
+<input type="button" value="登录" id="login">
+<input type="button" value="删除" id="del">
+
+<script>
+    var name=document.getElementById('username');
+    var login=document.getElementById('login');
+    var del=document.getElementById('del');
+
+    if(getCookie('username')){
+        name.value=getCookie('username');   //如果已经登录过了，就直接把这个值付给框框
+    }
+    // login.onclick=function(){
+    //     var name=document.getElementById('username');
+    //     alert('login successfully');
+    //     setCookie('username',name.value,1);
+    //     alert(decodeURI(document.cookie))
+    // };
+   function dj(o){
+       o.onclick=function(){
+           if(o===login) {
+               var name = document.getElementById('username');
+               alert('login successfully');
+               setCookie('username', name.value, 1);
+               alert(decodeURI(document.cookie))
+           }else {
+                       var name=document.getElementById('username');
+                       removeCookie('username');
+                       alert('delete successfully');
+                       name.value='';
+                   alert(decodeURI(document.cookie))
+
+           }
+           };
+   }
+   dj(login);
+    dj(del);
+
+
+
+    // del.onclick=function(){
+    //     var name=document.getElementById('username');
+    //     removeCookie('username');
+    //     alert('delete successfully');
+    //     name.value='';
+    // };
+
+
+
+    var oDate=new Date();
+    oDate.setDate(oDate.getDate()+5); //根据来访者当前时间加上5天
+
+    //封装一个函数来获取cookie
+    function getCookie(key){
+        var arr1=document.cookie.split('; '); //通过； 去拆分成一个一个的cookie
+        for(var i=0;i<arr1.length;i++){
+            var arr2=arr1[i].split('=');
+            if(arr2[0]==key){
+                return decodeURI(arr2[1])
+            }
+        }
+    }
+    //alert(getCookie('username'));
+
+    //封装一个函数设置cookie
+    function setCookie(key,value,t){
+        var oDate=new Date();
+        oDate.setDate(oDate.getDate()+t);
+        document.cookie=key+'='+encodeURI(value)+';expires='+oDate.toGMTString();
+    }
+
+
+    //封装一个删除cookie的函数
+    function removeCookie(key){
+        setCookie(key,'',-1)
+    }
+
+</script>
+</body>
+</html>

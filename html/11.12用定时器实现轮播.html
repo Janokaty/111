@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播</title>
+    <style>
+        body{
+            background: black;
+        }
+        ul li{
+            list-style: none;
+            width: 50px;
+            height: 50px;
+            background: grey;
+            margin-top: 10px;
+        }
+        #div2{
+            position: relative;
+            margin: -300px 0 0 300px;
+
+        }
+        ul li:first-child{
+            background: orange;
+        }
+        #div1{
+            width: 660px;
+            height: 360px;
+            position: relative;
+            margin:  50px auto;
+            background: grey;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2">
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</div>
+<script>
+    var oDiv1=document.getElementById("div1");
+    var aLi=document.getElementsByTagName("li");
+    var arr=['../images/1.jpg','../images/2.jpg','../images/3.jpg','../images/4.jpg'];
+    var num=0;
+    oDiv1.style.background='url('+arr[0]+')';
+    for(var i=0;i<arr.length;i++) {
+        aLi[i].index=i;
+        aLi[i].onclick=function(){
+            //index%=arr.length;
+            for(var j=0;j<arr.length;j++){
+                aLi[j].style.background="gray";
+            }
+            oDiv1.style.background='url('+arr[this.index]+')';
+            this.style.background="orange";
+            index++;
+        };
+    }
+</script>
+</body>
+</html>
